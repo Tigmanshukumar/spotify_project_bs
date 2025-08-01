@@ -2,7 +2,7 @@
 
 > A pixel-perfect recreation of Spotify's web interface featuring responsive design, interactive music controls, and authentic dark theme styling built with Bootstrap 5 and vanilla JavaScript.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-1DB954?style=for-the-badge&logo=spotify)]([https://your-domain.com](https://joyful-douhua-dee746.netlify.app/))
+[![Live Demo](https://img.shields.io/badge/Live-Demo-1DB954?style=for-the-badge&logo=spotify)](https://joyful-douhua-dee746.netlify.app/)
 [![Figma Design](https://img.shields.io/badge/Figma-Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/your-design-link)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
