@@ -15,7 +15,7 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 767.98px) {
+@media (max-width: 786px) {
   .content-container {
     width: 100%;
   }
@@ -34,6 +34,51 @@ body {
   padding: 24px 16px;
   overflow-y: auto;
   flex-shrink: 0;
+}
+
+/* Offcanvas Sidebar Styles */
+.offcanvas.offcanvas-start {
+  background-color: #000;
+}
+
+.offcanvas-body {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Mobile Sidebar Specific Styles */
+.mobile-sidebar .nav-link span,
+.mobile-sidebar .action-item span,
+.mobile-sidebar .playlist-item a {
+  display: inline-block !important;
+  color: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mobile-sidebar .playlist-item {
+  display: block !important;
+  margin-bottom: 8px;
+}
+
+.mobile-sidebar .offcanvas-body {
+  padding-top: 10px;
+}
+
+.offcanvas .nav-link,
+.offcanvas .action-item,
+.offcanvas .playlist-item a {
+  color: #b3b3b3;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  display: block;
+  padding: 8px 0;
+}
+
+.offcanvas .nav-link:hover,
+.offcanvas .action-item:hover,
+.offcanvas .playlist-item a:hover {
+  color: #fff;
 }
 
 .sidebar .nav-link {
@@ -194,6 +239,16 @@ body {
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease;
+}
+
+/* Player Controls Container */
+.player-controls-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .play-btn:hover {
@@ -395,6 +450,7 @@ body {
   background-color: #181818;
   border-top: 1px solid #282828;
   padding: 0 16px;
+  z-index: 1030; /* Ensure it stays above other content */
 }
 
 .current-song-img {
@@ -412,6 +468,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px;
+  line-height: 1.2;
 }
 
 .current-song-artist {
@@ -420,6 +477,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px;
+  line-height: 1.2;
 }
 
 .play-pause-btn {
@@ -503,6 +561,38 @@ body {
     width: 160px;
     height: 160px;
   }
+  
+  /* Fix for mobile player controls */
+  .player-controls-center {
+    width: 100%;
+  }
+  
+  /* Ensure offcanvas sidebar text is visible */
+  .offcanvas .nav-link span,
+  .offcanvas .action-item span,
+  .offcanvas .playlist-item a {
+    display: inline-block !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    color: white;
+  }
+  
+  /* Improve offcanvas sidebar spacing */
+  .offcanvas .nav-item,
+  .offcanvas .action-item,
+  .offcanvas .playlist-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Ensure icons are properly aligned */
+  .offcanvas .nav-link i,
+  .offcanvas .action-icon {
+    width: 24px;
+    text-align: center;
+    margin-right: 12px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -519,7 +609,67 @@ body {
     font-size: 24px;
   }
   
+  /* Fix for very small screens */
   .current-song-name {
-    max-width: 80px;
+    max-width: 70px;
+    font-size: 12px;
+  }
+  
+  /* Adjust now playing bar for mobile */
+  .now-playing-bar {
+    padding: 0 8px;
+  }
+  
+  .now-playing-bar .row {
+    flex-wrap: nowrap;
+  }
+  
+  .now-playing-bar .col-3,
+  .now-playing-bar .col-6 {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  
+  /* Ensure controls fit on small screens */
+  .controls-buttons {
+    margin-bottom: 5px;
+  }
+  
+  .controls-buttons .btn {
+    padding: 0;
+    margin: 0 5px;
+  }
+  
+  .controls-buttons .btn i {
+    font-size: 14px;
+  }
+  
+  .play-pause-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .progress-container {
+    font-size: 9px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .current-time, .total-time {
+    min-width: 25px;
+  }
+  
+  /* Adjust song image size */
+  .current-song-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  /* Hide heart button on very small screens */
+  .now-playing-bar .col-3 .btn-link {
+    display: none;
   }
 }
