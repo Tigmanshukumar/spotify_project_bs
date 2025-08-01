@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify - Web Player: Music for everyone</title>
+    <!-- Bootstrap Icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://ext.same-assets.com/3072843978/84745728.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="bg-black text-white">
+    <div class="main-container d-flex">
+      <!-- SIDEBAR -->
+      <div class="sidebar bg-black p-3 d-none d-md-block">
+        <div class="logo mb-4">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="#1ED760"
+              class="bi bi-spotify"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"
+              />
+            </svg>
+          </a>
+        </div>
+        <ul class="nav flex-column mb-5">
+          <li class="nav-item">
+            <a class="nav-link active d-flex align-items-center" href="#">
+              <i class="fas fa-home me-3"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="#">
+              <i class="fas fa-search me-3"></i>
+              <span>Search</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="#">
+              <i class="fas fa-book me-3"></i>
+              <span>Your Library</span>
+            </a>
+          </li>
+        </ul>
+        <div class="actions mb-4">
+          <div
+            class="action-item d-flex align-items-center mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#createPlaylistModal"
+            role="button"
+          >
+            <div
+              class="action-icon bg-gray-light rounded-1 me-3 d-flex align-items-center justify-content-center"
+            >
+              <i class="fas fa-plus"></i>
+            </div>
+            <span>Create Playlist</span>
+          </div>
+          <div class="action-item d-flex align-items-center">
+            <div
+              class="action-icon bg-gradient-purple rounded-1 me-3 d-flex align-items-center justify-content-center"
+            >
+              <i class="fas fa-heart"></i>
+            </div>
+            <span>Liked Songs</span>
+          </div>
+        </div>
+        <div class="divider mb-3"></div>
+        <div class="playlists">
+          <div class="playlist-item mb-2">
+            <a href="#">My Playlist #1</a>
+          </div>
+          <div class="playlist-item mb-2">
+            <a href="#">Discover Weekly</a>
+          </div>
+          <div class="playlist-item mb-2">
+            <a href="#">Release Radar</a>
+          </div>
+          <div class="playlist-item mb-2">
+            <a href="#">Rock Classics</a>
+          </div>
+          <div class="playlist-item mb-2">
+            <a href="#">Chill Hits</a>
+          </div>
+        </div>
+        <div class="sidebar-footer mt-auto pt-5">
+          <div class="install-app mb-3">
+            <a href="#" class="d-flex align-items-center">
+              <i class="fas fa-arrow-down me-2"></i>
+              <span>Install App</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- SIDEBAR END -->
+
+      <!-- Offcanvas Sidebar for mobile -->
+      <div
+        class="offcanvas offcanvas-start bg-black text-white"
+        tabindex="-1"
+        id="sidebarMenu"
+        aria-labelledby="sidebarMenuLabel"
+      >
+        <div class="offcanvas-header">
+          <div class="logo">
+            <a href="#">
+              <img
+                src="https://ext.same-assets.com/3072843978/3858636772.svg"
+                alt="Spotify Logo"
+                height="40"
+              />
+            </a>
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav flex-column mb-5">
+            <li class="nav-item">
+              <a class="nav-link active d-flex align-items-center" href="#">
+                <i class="fas fa-home me-3"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#">
+                <i class="fas fa-search me-3"></i>
+                <span>Search</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#">
+                <i class="fas fa-book me-3"></i>
+                <span>Your Library</span>
+              </a>
+            </li>
+          </ul>
+          <div class="actions mb-4">
+            <div
+              class="action-item d-flex align-items-center mb-3"
+              data-bs-toggle="modal"
+              data-bs-target="#createPlaylistModal"
+              role="button"
+            >
+              <div
+                class="action-icon bg-gray-light rounded-1 me-3 d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-plus"></i>
+              </div>
+              <span>Create Playlist</span>
+            </div>
+            <div class="action-item d-flex align-items-center">
+              <div
+                class="action-icon bg-gradient-purple rounded-1 me-3 d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-heart"></i>
+              </div>
+              <span>Liked Songs</span>
+            </div>
+          </div>
+          <div class="divider mb-3"></div>
+          <div class="playlists">
+            <div class="playlist-item mb-2">
+              <a href="#">My Playlist #1</a>
+            </div>
+            <div class="playlist-item mb-2">
+              <a href="#">Discover Weekly</a>
+            </div>
+            <div class="playlist-item mb-2">
+              <a href="#">Release Radar</a>
+            </div>
+            <div class="playlist-item mb-2">
+              <a href="#">Rock Classics</a>
+            </div>
+            <div class="playlist-item mb-2">
+              <a href="#">Chill Hits</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="content-container">
+        <!-- TOP NAVBAR -->
+        <nav
+          class="top-navbar d-flex justify-content-between align-items-center p-3"
+        >
+          <div class="nav-controls d-flex">
+            <button
+              class="btn btn-dark rounded-circle me-2 d-md-none"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebarMenu"
+              aria-controls="sidebarMenu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <button class="btn btn-dark rounded-circle me-2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="btn btn-dark rounded-circle">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="nav-user-menu d-flex align-items-center">
+            <a
+              href="#"
+              class="btn btn-outline-light btn-sm rounded-pill px-3 fw-semibold me-3"
+              >🌟Upgrade</a
+            >
+            <div class="dropdown">
+              <div
+                class="user-profile d-flex align-items-center"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div
+                  class="user-avatar bg-gray-dark rounded-circle d-flex align-items-center justify-content-center"
+                >
+                  <img
+                    src="https://i.postimg.cc/V60mGHLq/Id-447-034667-1.jpg"
+                    style="border-radius: 100px"
+                    width="28;"
+                    alt=""
+                  />
+                </div>
+                <span class="ms-2">Profile</span>
+                <i class="fas fa-caret-down ms-2"></i>
+              </div>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Account
+                    <i
+                      class="bi bi-box-arrow-up-right"
+                      style="margin-left: 40px"
+                    ></i
+                  ></a>
+                </li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Support
+                    <i
+                      class="bi bi-box-arrow-up-right"
+                      style="margin-left: 43px"
+                    ></i
+                  ></a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Download
+                    <i
+                      class="bi bi-box-arrow-up-right"
+                      style="margin-left: 27px"
+                    ></i
+                  ></a>
+                </li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- TOP NAVBAR END -->
+
+        <!-- HERO/HEADER -->
+        <header
+          class="hero-section p-4"
+          style="
+            background: linear-gradient(
+              135deg,
+              #b39f93 0%,
+              #c29a70 20%,
+              #8496a5 100%
+            );
+          "
+        >
+          <div class="container-fluid">
+            <div class="row align-items-end">
+              <div class="col-auto">
+                <div class="hero-image shadow">
+                  <img
+                    src="https://i.postimg.cc/HkKYrhH4/QBIRm-Ixeo-Uc-HD.png" style="box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);"
+                    alt="Playlist Cover"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="hero-text">
+                  <div class="small mb-2">PLAYLIST</div>
+                  <h1 class="display-3 fw-bold mb-3">Today's Top Hits</h1>
+                  <p class="mb-1">
+                    Spotify · 28,719,302 likes · 5 songs, 1 hr 45 min
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- HERO/HEADER END -->
+
+        <!-- PLAYER CONTROLS -->
+        <div class="player-controls p-3 d-flex align-items-center">
+          <button
+            class="btn btn-success rounded-circle play-btn me-3"
+            data-song="Today's Top Hits"
+            data-artist="Spotify"
+            data-img="https://i.postimg.cc/HkKYrhH4/QBIRm-Ixeo-Uc-HD.png"
+          >
+            <i class="fas fa-play"></i>
+          </button>
+          <button
+            class="btn btn-dark rounded-circle me-3 like-button"
+            data-bs-toggle="tooltip"
+            title="Save to Your Library"
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <button
+            class="btn btn-dark rounded-circle me-3"
+            data-bs-toggle="tooltip"
+            title="More options"
+          >
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <!-- PLAYER CONTROLS END -->
+
+        <!-- SONGS LIST -->
+        <div class="songs-container p-4">
+          <div
+            class="songs-header d-flex align-items-center text-secondary mb-3"
+          >
+            <div class="song-number">#</div>
+            <div class="song-title flex-grow-1">TITLE</div>
+            <div class="song-album">ALBUM</div>
+            <div class="song-date">DATE ADDED</div>
+            <div class="song-duration"><i class="far fa-clock"></i></div>
+          </div>
+          <div class="divider mb-3"></div>
+
+          <!-- Song Item 1 -->
+          <div class="song-item d-flex align-items-center mb-3">
+            <div class="song-number position-relative" style="width: 40px">
+              <span class="song-number-text">1</span>
+              <i class="fas fa-play song-number-icon" style="display: none"></i>
+            </div>
+            <div class="song-title flex-grow-1 d-flex align-items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e022737be35cc5245eef495be90"
+                alt="Song Cover"
+                class="song-img me-3"
+              />
+              <div>
+                <div class="song-name">Skyfall</div>
+                <div class="song-artist text-secondary">Adele</div>
+              </div>
+            </div>
+            <div class="song-album">Top #1</div>
+            <div class="song-date">2 days ago</div>
+            <div class="song-duration">4:46</div>
+          </div>
+
+          <!-- Song Item 2 -->
+          <div class="song-item d-flex align-items-center mb-3">
+            <div class="song-number position-relative" style="width: 40px">
+              <span class="song-number-text">2</span>
+              <i class="fas fa-play song-number-icon" style="display: none"></i>
+            </div>
+            <div class="song-title flex-grow-1 d-flex align-items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e026ec7ab30397ea37295340a41"
+                alt="Song Cover"
+                class="song-img me-3"
+              />
+              <div>
+                <div class="song-name">Lonely</div>
+                <div class="song-artist text-secondary">Akon</div>
+              </div>
+            </div>
+            <div class="song-album">Cold Night</div>
+            <div class="song-date">3 days ago</div>
+            <div class="song-duration">3:50</div>
+          </div>
+
+          <!-- Song Item 3 -->
+          <div class="song-item d-flex align-items-center mb-3">
+            <div class="song-number position-relative" style="width: 40px">
+              <span class="song-number-text">3</span>
+              <i class="fas fa-play song-number-icon" style="display: none"></i>
+            </div>
+            <div class="song-title flex-grow-1 d-flex align-items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02ebc8cfac8b586bc475b04918"
+                alt="Song Cover"
+                class="song-img me-3"
+              />
+              <div>
+                <div class="song-name">Summertime Sadness</div>
+                <div class="song-artist text-secondary">Lana Del Rey</div>
+              </div>
+            </div>
+            <div class="song-album">Evening in Summer</div>
+            <div class="song-date">1 week ago</div>
+            <div class="song-duration">4:25</div>
+          </div>
+
+          <!-- Song Item 4 -->
+          <div class="song-item d-flex align-items-center mb-3">
+            <div class="song-number position-relative" style="width: 40px">
+              <span class="song-number-text">4</span>
+              <i class="fas fa-play song-number-icon" style="display: none"></i>
+            </div>
+            <div class="song-title flex-grow-1 d-flex align-items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02b8e072ca95df6dc435b1484f"
+                alt="Song Cover"
+                class="song-img me-3"
+              />
+              <div>
+                <div class="song-name">Happy Nation</div>
+                <div class="song-artist text-secondary">Ace of Base</div>
+              </div>
+            </div>
+            <div class="song-album">Conqueror</div>
+            <div class="song-date">2 weeks ago</div>
+            <div class="song-duration">4:15</div>
+          </div>
+
+          <!-- Song Item 5 -->
+          <div class="song-item d-flex align-items-center mb-3">
+            <div class="song-number position-relative" style="width: 40px">
+              <span class="song-number-text">5</span>
+              <i class="fas fa-play song-number-icon" style="display: none"></i>
+            </div>
+            <div class="song-title flex-grow-1 d-flex align-items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02d4c273fe23a0950d7ac9fce2"
+                alt="Song Cover"
+                class="song-img me-3"
+              />
+              <div>
+                <div class="song-name">Danza Kuduro</div>
+                <div class="song-artist text-secondary">Don Omar, Lucenzo</div>
+              </div>
+            </div>
+            <div class="song-album">Dare</div>
+            <div class="song-date">3 weeks ago</div>
+            <div class="song-duration">3:18</div>
+          </div>
+        </div>
+        <!-- SONGS LIST END -->
+
+        <!-- RECOMMENDED PLAYLISTS -->
+        <div class="recommended-section p-4">
+          <h2 class="section-title mb-4">Made For You</h2>
+          <div
+            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4"
+          >
+            <!-- Playlist Card 1 -->
+            <div class="col">
+              <div class="card bg-dark h-100">
+                <div class="card-img-container position-relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003fe0099a8dcd3054706ffc92f"
+                    class="card-img-top"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="btn btn-success rounded-circle play-btn-card position-absolute"
+                    data-song="Discover Weekly"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003fe0099a8dcd3054706ffc92f"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Discover Weekly</h5>
+                  <p class="card-text text-secondary">
+                    Your weekly mixtape of fresh music
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 2 -->
+            <div class="col">
+              <div class="card bg-dark h-100">
+                <div class="card-img-container position-relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003ca5a7517156021292e5663a6"
+                    class="card-img-top"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="btn btn-success rounded-circle play-btn-card position-absolute"
+                    data-song="Release Radar"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003ca5a7517156021292e5663a6"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Release Radar</h5>
+                  <p class="card-text text-secondary">
+                    Catch all the latest music from artists you follow
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 3 -->
+            <div class="col">
+              <div class="card bg-dark h-100">
+                <div class="card-img-container position-relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003e4eadd417a05b2546e866934"
+                    class="card-img-top"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="btn btn-success rounded-circle play-btn-card position-absolute"
+                    data-song="Daily Mix 1"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003e4eadd417a05b2546e866934"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Daily Mix 1</h5>
+                  <p class="card-text text-secondary">
+                    Taylor Swift, Olivia Rodrigo, Billie Eilish and more
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 4 -->
+            <div class="col">
+              <div class="card bg-dark h-100">
+                <div class="card-img-container position-relative">
+                  <img
+                    src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d5aa349188974978351b0f9f"
+                    class="card-img-top"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="btn btn-success rounded-circle play-btn-card position-absolute"
+                    data-song="Daily Mix 2"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003ec69667b99b171410a225f14"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Daily Mix 2</h5>
+                  <p class="card-text text-secondary">
+                    Drake, Kendrick Lamar, J. Cole and more
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 5 -->
+            <div class="col">
+              <div class="card bg-dark h-100">
+                <div class="card-img-container position-relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003b70e0223f544b1faa2e95ed0"
+                    class="card-img-top"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="btn btn-success rounded-circle play-btn-card position-absolute"
+                    data-song="Mood Booster"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003b70e0223f544b1faa2e95ed0"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Mood Booster</h5>
+                  <p class="card-text text-secondary">
+                    Get happy with today's dose of feel-good songs!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- RECOMMENDED PLAYLISTS END -->
+
+        <!-- GENRES SECTION -->
+        <div class="genres-section p-4">
+          <h2 class="section-title mb-4">Browse Categories</h2>
+          <div
+            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4"
+          >
+            <!-- Genre Card 1 -->
+            <div class="col">
+              <div
+                class="genre-card position-relative"
+                style="background-color: #dc148c"
+              >
+                <h3 class="genre-title">Pop</h3>
+                <img
+                  src="https://i.pinimg.com/736x/16/c0/32/16c0326b05bbe94a90aa9847edcd457f.jpg"
+                  alt="Pop"
+                  class="genre-img"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 2 -->
+            <div class="col">
+              <div
+                class="genre-card position-relative"
+                style="background-color: #ba5d07"
+              >
+                <h3 class="genre-title">Hip-Hop</h3>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0ey4udCd8L3OpuNbdTVBt3LWqRn_50BE0g&s"
+                  alt="Hip-Hop"
+                  class="genre-img"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 3 -->
+            <div class="col">
+              <div
+                class="genre-card position-relative"
+                style="background-color: #e8115b"
+              >
+                <h3 class="genre-title">Rock</h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ca966977380ba83ad20f968e"
+                  alt="Rock"
+                  class="genre-img"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 4 -->
+            <div class="col">
+              <div
+                class="genre-card position-relative"
+                style="background-color: #148a08"
+              >
+                <h3 class="genre-title">Indie</h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d38fb1104310e48a8477467f"
+                  alt="Indie"
+                  class="genre-img"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 5 -->
+            <div class="col">
+              <div
+                class="genre-card position-relative"
+                style="background-color: #8d67ab"
+              >
+                <h3 class="genre-title">Chill</h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da842128d1e7b21f4f57fa1d0174"
+                  alt="Chill"
+                  class="genre-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- GENRES SECTION END -->
+      </div>
+      <!-- MAIN CONTENT END -->
+    </div>
+
+    <!-- NOW PLAYING BAR -->
+    <div class="now-playing-bar fixed-bottom p-2">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!-- Current Song Info -->
+          <div class="col-3 d-flex align-items-center">
+            <img
+              src="https://i.scdn.co/image/ab67616d00001e022737be35cc5245eef495be90"
+              alt="Current Song"
+              class="current-song-img me-3"
+            />
+            <div>
+              <div class="current-song-name">Skyfall</div>
+              <div class="current-song-artist text-secondary small">Adele</div>
+            </div>
+            <button class="btn btn-link text-secondary ms-3">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+
+          <!-- Player Controls -->
+          <div class="col-6">
+            <div
+              class="player-controls-center d-flex flex-column align-items-center"
+            >
+              <div
+                class="controls-buttons d-flex align-items-center justify-content-center mb-2"
+              >
+                <button class="btn btn-link text-secondary mx-2">
+                  <i class="fas fa-random"></i>
+                </button>
+                <button class="btn btn-link text-secondary mx-2">
+                  <i class="fas fa-step-backward"></i>
+                </button>
+                <button
+                  class="btn btn-light rounded-circle play-pause-btn mx-2"
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+                <button class="btn btn-link text-secondary mx-2">
+                  <i class="fas fa-step-forward"></i>
+                </button>
+                <button class="btn btn-link text-secondary mx-2">
+                  <i class="fas fa-redo"></i>
+                </button>
+              </div>
+              <div class="progress-container d-flex align-items-center w-100">
+                <span class="current-time me-2">0:45</span>
+                <div class="progress flex-grow-1" style="height: 4px">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 25%"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <span class="total-time ms-2">4:46</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Volume Controls -->
+          <div class="col-3 d-flex align-items-center justify-content-end">
+            <button class="btn btn-link text-secondary me-2">
+              <i class="fas fa-list"></i>
+            </button>
+            <button class="btn btn-link text-secondary me-2">
+              <i class="fas fa-desktop"></i>
+            </button>
+            <div class="volume-container d-flex align-items-center">
+              <button class="btn btn-link text-secondary me-2">
+                <i class="fas fa-volume-up"></i>
+              </button>
+              <input
+                type="range"
+                class="form-range"
+                id="volumeControl"
+                min="0"
+                max="100"
+                value="70"
+                style="width: 100px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- NOW PLAYING BAR END -->
+
+    <!-- Toast Notifications -->
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      style="z-index: 11"
+    >
+      <div
+        id="likeToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header bg-dark text-white border-0">
+          <i class="fas fa-heart text-danger me-2"></i>
+          <strong class="me-auto">Added to Liked Songs</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <div
+        id="playToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header bg-dark text-white border-0">
+          <i class="fas fa-music text-success me-2"></i>
+          <strong class="me-auto">Now Playing</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body bg-dark text-white">
+          <span id="playingToastText">Skyfall</span>
+        </div>
+      </div>
+
+      <!-- Playlist created toast -->
+      <div
+        class="toast"
+        id="playlistToast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header bg-dark text-white border-0">
+          <i class="fas fa-plus-square me-2 text-success"></i>
+          <strong class="me-auto">Playlist Created</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body bg-dark text-white">
+          <span id="playlistToastText"
+            >Your new playlist has been created!</span
+          >
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+  </body>
+</html>
