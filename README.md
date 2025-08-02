@@ -3,7 +3,7 @@
 > A pixel-perfect recreation of Spotify's web interface featuring responsive design, interactive music controls, and authentic dark theme styling built with Bootstrap 5 and vanilla JavaScript.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-1DB954?style=for-the-badge&logo=spotify)](https://spotifywebbootstrap.netlify.app/)
-[![Figma Design](https://img.shields.io/badge/Figma-Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/your-design-link)
+[![Figma Design](https://img.shields.io/badge/Figma-Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/JlCrfFTTnfakU7YFblP3wN/Spotify-UI?node-id=0-1&t=3kkdNzbYTu5UdzhN-1)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -22,7 +22,7 @@ The complete design system and wireframes are available on Figma, featuring:
 - **Interactive Prototypes** - Clickable prototypes showing user flows
 - **Design Tokens** - Standardized spacing, shadows, and animations
 
-**[🎨 View Figma Design](https://www.figma.com/your-design-link)**
+**[🎨 View Figma Design](https://www.figma.com/design/JlCrfFTTnfakU7YFblP3wN/Spotify-UI?node-id=0-1&t=3kkdNzbYTu5UdzhN-1)**
 
 ### Design to Code Workflow
 1. **Research** - Analyzed original Spotify interface
@@ -476,7 +476,7 @@ Supported Browsers: 4
 
 **[⭐ Star this repo](https://github.com/tigmanshukumar/spotify_project_bs)** if you found it helpful!
 
-**[🎨 View Design](https://www.figma.com/your-design-link)** • **[🐛 Report Bug](https://github.com/tigmanshukumar/spotify_project_bs/issues)** • **[✨ Request Feature](https://github.com/yourusername/spotify-web-player/issues)**
+**[🎨 View Design](https://www.figma.com/design/JlCrfFTTnfakU7YFblP3wN/Spotify-UI?node-id=0-1&t=3kkdNzbYTu5UdzhN-1)** • **[🐛 Report Bug](https://github.com/tigmanshukumar/spotify_project_bs/issues)** • **[✨ Request Feature](https://github.com/yourusername/spotify-web-player/issues)**
 
 Made with ❤️ and lots of ☕ by **[Your Name](https://github.com/tigmanshukumar)**
 
