@@ -416,8 +416,8 @@ MIT License - Feel free to use this project for learning, personal use, or comme
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/tigmanshukumar)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/tigmanshu-kumar-a774082b7/)
+- GitHub: [@tigmanshukumar](https://github.com/tigmanshukumar)
+- LinkedIn: [My LinkedIn](https://www.linkedin.com/in/tigmanshu-kumar-a774082b7/)
 - Email: tigmanshukumar5@gmail.com
 
 ## 🙏 Acknowledgments
@@ -478,7 +478,7 @@ Supported Browsers: 4
 
 **[🎨 View Design](https://www.figma.com/design/JlCrfFTTnfakU7YFblP3wN/Spotify-UI?node-id=0-1&t=3kkdNzbYTu5UdzhN-1)** • **[🐛 Report Bug](https://github.com/tigmanshukumar/spotify_project_bs/issues)** • **[✨ Request Feature](https://github.com/yourusername/spotify-web-player/issues)**
 
-Made with ❤️ and lots of ☕ by **[Your Name](https://github.com/tigmanshukumar)**
+Made with ❤️ and lots of ☕ by **[Tigmanshu Kumar](https://github.com/tigmanshukumar)**
 
 *This project is not affiliated with Spotify AB.*
 
